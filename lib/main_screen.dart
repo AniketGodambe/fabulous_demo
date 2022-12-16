@@ -1,7 +1,11 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:get/get.dart';
+
+import 'common_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -55,6 +59,80 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
               const SizedBox(height: 20),
+              Bounceable(
+                onTap: () {
+                  showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (context) {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                          child: const FractionallySizedBox(
+                            heightFactor: 0.9,
+                            child: BottomSheetUI(
+                              img: 'images/fab7.jpg',
+                            ),
+                          ),
+                        );
+                      });
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.blue.withOpacity(0.9),
+                        Colors.blue.withOpacity(0.6),
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 2, horizontal: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text("2 min"),
+                      ),
+                      const ListTile(
+                        leading: Icon(
+                          Icons.wind_power,
+                          color: Colors.white,
+                        ),
+                        title: Text(
+                          "Motivator",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "Expanded widget to force the children of the RenderFlex to fit ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
               const Text(
                 "Today",
                 style: TextStyle(
@@ -64,39 +142,96 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              const CardWidget(
-                time: "7:00 AM",
-                img: "images/fab6.jpg",
-                title: "Early Moarning Routine",
-                color: Colors.amber,
-                icon: Icon(
-                  Icons.access_alarm,
+              Bounceable(
+                onTap: () {
+                  showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (context) {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                          child: const FractionallySizedBox(
+                            heightFactor: 0.9,
+                            child: BottomSheetUI(
+                              img: 'images/fab6.jpg',
+                            ),
+                          ),
+                        );
+                      });
+                },
+                child: const CardWidget(
+                  time: "7:00 AM",
+                  img: "images/fab6.jpg",
+                  title: "Early Moarning Routine",
                   color: Colors.amber,
+                  icon: Icon(
+                    Icons.access_alarm,
+                    color: Colors.amber,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
-              const CardWidget(
-                time: "9:00 AM",
-                img: "images/fab1.jpg",
-                title: "Moarning Routine",
-                color: Colors.red,
-                icon: Icon(
-                  Icons.cloud_circle,
+              Bounceable(
+                onTap: () {
+                  showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (context) {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                          child: const FractionallySizedBox(
+                            heightFactor: 0.9,
+                            child: BottomSheetUI(
+                              img: 'images/fab1.jpg',
+                            ),
+                          ),
+                        );
+                      });
+                },
+                child: const CardWidget(
+                  time: "9:00 AM",
+                  img: "images/fab1.jpg",
+                  title: "Moarning Routine",
                   color: Colors.red,
+                  icon: Icon(
+                    Icons.cloud_circle,
+                    color: Colors.red,
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
               Column(
                 children: [
-                  const CardWidget(
-                    isExpanded: true,
-                    time: "1:00 AM",
-                    img: "images/fab3.jpg",
-                    title: "Afternoon Routine",
-                    color: Colors.blue,
-                    icon: Icon(
-                      Icons.cloud_circle,
+                  Bounceable(
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) {
+                            return BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                              child: const FractionallySizedBox(
+                                heightFactor: 0.9,
+                                child: BottomSheetUI(
+                                  img: 'images/fab3.jpg',
+                                ),
+                              ),
+                            );
+                          });
+                    },
+                    child: const CardWidget(
+                      isExpanded: true,
+                      time: "1:00 AM",
+                      img: "images/fab3.jpg",
+                      title: "Afternoon Routine",
                       color: Colors.blue,
+                      icon: Icon(
+                        Icons.cloud_circle,
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                   Container(
@@ -166,28 +301,66 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
               const SizedBox(height: 20),
-              const CardWidget(
-                time: "7:00 PM",
-                img: "images/fab4.jpg",
-                title: "Evening Routine",
-                color: Colors.red,
-                icon: Icon(
-                  Icons.cloud_circle,
+              Bounceable(
+                onTap: () {
+                  showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (context) {
+                        return BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                          child: const FractionallySizedBox(
+                            heightFactor: 0.9,
+                            child: BottomSheetUI(
+                              img: 'images/fab4.jpg',
+                            ),
+                          ),
+                        );
+                      });
+                },
+                child: const CardWidget(
+                  time: "7:00 PM",
+                  img: "images/fab4.jpg",
+                  title: "Evening Routine",
                   color: Colors.red,
+                  icon: Icon(
+                    Icons.cloud_circle,
+                    color: Colors.red,
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
               Column(
                 children: [
-                  const CardWidget(
-                    isExpanded: true,
-                    time: "9:00 PM",
-                    img: "images/fab5.jpg",
-                    title: "Night Routine",
-                    color: Colors.blue,
-                    icon: Icon(
-                      Icons.cloud_circle,
+                  Bounceable(
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) {
+                            return BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                              child: const FractionallySizedBox(
+                                heightFactor: 0.9,
+                                child: BottomSheetUI(
+                                  img: 'images/fab5.jpg',
+                                ),
+                              ),
+                            );
+                          });
+                    },
+                    child: const CardWidget(
+                      isExpanded: true,
+                      time: "9:00 PM",
+                      img: "images/fab5.jpg",
+                      title: "Night Routine",
                       color: Colors.blue,
+                      icon: Icon(
+                        Icons.cloud_circle,
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                   Container(
@@ -206,7 +379,7 @@ class _MainScreenState extends State<MainScreen> {
                         log(value.toString());
                         if (value == true) {
                           setState(() {
-                            showAll2 = "Colapse";
+                            showAll2 = "Collapse";
                           });
                         } else {
                           setState(() {
@@ -260,94 +433,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CardWidget extends StatelessWidget {
-  final String time, img, title;
-  final Color color;
-  final Icon icon;
-  final bool isExpanded;
-  const CardWidget(
-      {super.key,
-      required this.time,
-      required this.img,
-      required this.title,
-      required this.color,
-      required this.icon,
-      this.isExpanded = false});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            icon,
-            const SizedBox(width: 20),
-            Text(
-              time,
-              style: TextStyle(
-                color: color,
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Stack(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(left: 40),
-              decoration: BoxDecoration(
-                borderRadius: isExpanded == true
-                    ? BorderRadius.circular(0)
-                    : BorderRadius.circular(12),
-              ),
-              height: 70,
-              width: Get.width,
-              child: ClipRRect(
-                borderRadius: isExpanded == true
-                    ? const BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                      )
-                    : BorderRadius.circular(12),
-                child: Image.asset(
-                  img,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Positioned(
-              left: 60,
-              top: 20,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(width: 110),
-                    const Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      color: Colors.black,
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      ],
     );
   }
 }
