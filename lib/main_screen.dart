@@ -1,10 +1,8 @@
 import 'dart:developer';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:get/get.dart';
-
 import 'common_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -142,7 +140,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              Bounceable(
+              InkWell(
                 onTap: () {
                   showModalBottomSheet(
                       context: context,
@@ -172,7 +170,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              Bounceable(
+              InkWell(
                 onTap: () {
                   showModalBottomSheet(
                       context: context,
@@ -204,7 +202,7 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 30),
               Column(
                 children: [
-                  Bounceable(
+                  InkWell(
                     onTap: () {
                       showModalBottomSheet(
                           context: context,
@@ -250,7 +248,7 @@ class _MainScreenState extends State<MainScreen> {
                         log(value.toString());
                         if (value == true) {
                           setState(() {
-                            showAll1 = "Colapse";
+                            showAll1 = "Collapse";
                           });
                         } else {
                           setState(() {
@@ -301,7 +299,7 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
               const SizedBox(height: 20),
-              Bounceable(
+              InkWell(
                 onTap: () {
                   showModalBottomSheet(
                       context: context,
@@ -333,7 +331,7 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 30),
               Column(
                 children: [
-                  Bounceable(
+                  InkWell(
                     onTap: () {
                       showModalBottomSheet(
                           context: context,

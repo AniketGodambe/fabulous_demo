@@ -77,7 +77,7 @@ class CardWidget extends StatelessWidget {
               ),
             ),
             Positioned(
-              right: 50,
+              right: 20,
               top: 20,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,25 +111,24 @@ class BottomSheetUI extends StatelessWidget {
           topRight: Radius.circular(20),
         ),
       ),
-      height: Get.height,
-      child: Stack(
+      child: Column(
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-            child: SizedBox(
-              width: Get.width,
-              child: Image.asset(
-                img,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 10,
-            left: Get.width / 2.3,
+          Container(
+            padding: const EdgeInsets.only(top: 5),
+            height: 200,
+            width: Get.width,
+            alignment: Alignment.topCenter,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                image: DecorationImage(
+                  image: AssetImage(img),
+                  fit: BoxFit.cover,
+                )),
+            // height: Get.height,
             child: Column(
               children: [
                 Container(
@@ -143,28 +142,15 @@ class BottomSheetUI extends StatelessWidget {
                         offset: Offset.infinite,
                       ),
                     ],
-                    color: Colors.grey,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  height: 8,
+                  height: 5,
                   width: 50,
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  "Motivitaor",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            child: Column(
-              children: const [
-                ListTile(
+                const Spacer(),
+                const ListTile(
+                  contentPadding: EdgeInsets.only(left: 10),
                   leading: Icon(
                     Icons.alarm,
                     color: Colors.white,
@@ -174,7 +160,6 @@ class BottomSheetUI extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   subtitle: Text(
@@ -182,35 +167,12 @@ class BottomSheetUI extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.alarm,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Alarm",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "1:00 PM",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
