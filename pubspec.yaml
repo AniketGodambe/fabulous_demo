@@ -41,11 +41,16 @@ dependencies:
   get: 4.6.5
   google_fonts: ^3.0.1
   flutter_bounceable: ^1.0.3
+  flutter_animated_button: 2.0.2
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons:
+    git:
+      url: https://github.com/Davenchy/flutter_launcher_icons.git
+      ref: fixMinSdkParseFlutter2.8
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

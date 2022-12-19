@@ -12,9 +12,29 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin {
   String showAll1 = "Show All";
   String showAll2 = "Show All";
+
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    )
+      ..forward()
+      ..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,58 +95,79 @@ class _MainScreenState extends State<MainScreen> {
                         );
                       });
                 },
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.blue.withOpacity(0.9),
-                        Colors.blue.withOpacity(0.6),
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 2, horizontal: 4),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Text("2 min"),
+                child: Material(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  elevation: 4,
+                  child: Container(
+                    height: 50,
+                    padding: const EdgeInsets.all(12.0),
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.blue.withOpacity(0.9),
+                          Colors.blue.withOpacity(0.6),
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
                       ),
-                      const ListTile(
-                        leading: Icon(
-                          Icons.wind_power,
-                          color: Colors.white,
-                        ),
-                        title: Text(
-                          "Motivator",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                    ),
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        // Positioned(
+                        //   top: 0,
+                        //   right: 0,
+                        //   child: Container(
+                        //     padding: const EdgeInsets.symmetric(
+                        //         vertical: 2, horizontal: 4),
+                        //     decoration: BoxDecoration(
+                        //       color: Colors.white,
+                        //       borderRadius: BorderRadius.circular(12),
+                        //     ),
+                        //     child: const Text("2 min"),
+                        //   ),
+                        // ),
+                        Center(
+                          child: Text(
+                            "Continue",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20 * animationController.value,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                        ),
-                        subtitle: Text(
-                          "Expanded widget to force the children of the RenderFlex to fit ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                          ),
-                        ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      )
-                    ],
+                        )
+                        // const ListTile(
+                        //   leading: Icon(
+                        //     Icons.wind_power,
+                        //     color: Colors.white,
+                        //   ),
+                        //   title: Text(
+                        //     "Motivator",
+                        // style: TextStyle(
+                        //   color: Colors.white,
+                        //   fontSize: 20,
+                        // ),
+                        //   ),
+                        //   subtitle: Text(
+                        //     "Expande widget to force them",
+                        //     style: TextStyle(
+                        //       color: Colors.white,
+                        //       fontSize: 15,
+                        //     ),
+                        //   ),
+                        //   trailing: Icon(
+                        //     Icons.arrow_forward_ios_outlined,
+                        //     color: Colors.white,
+                        //     size: 20,
+                        //   ),
+                        // )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -140,7 +181,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              InkWell(
+              GestureDetector(
                 onTap: () {
                   showModalBottomSheet(
                       context: context,
@@ -170,7 +211,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              InkWell(
+              GestureDetector(
                 onTap: () {
                   showModalBottomSheet(
                       context: context,
@@ -202,7 +243,7 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 30),
               Column(
                 children: [
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
                           context: context,
@@ -299,7 +340,7 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
               const SizedBox(height: 20),
-              InkWell(
+              GestureDetector(
                 onTap: () {
                   showModalBottomSheet(
                       context: context,
@@ -331,7 +372,7 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 30),
               Column(
                 children: [
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
                           context: context,
