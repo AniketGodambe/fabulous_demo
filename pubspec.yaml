@@ -41,7 +41,7 @@ dependencies:
   get: 4.6.5
   google_fonts: ^3.0.1
   flutter_bounceable: ^1.0.3
-  flutter_animated_button: 2.0.2
+  animate_do: ^3.0.2
 
 
 dev_dependencies:

@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:ui';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:get/get.dart';
 import 'common_widget.dart';
 
@@ -23,6 +23,8 @@ class _MainScreenState extends State<MainScreen>
   void initState() {
     super.initState();
     animationController = AnimationController(
+      animationBehavior: AnimationBehavior.preserve,
+      lowerBound: 0.8,
       vsync: this,
       duration: const Duration(seconds: 3),
     )
@@ -77,98 +79,42 @@ class _MainScreenState extends State<MainScreen>
                 ],
               ),
               const SizedBox(height: 20),
-              Bounceable(
+              InkWell(
                 onTap: () {
-                  showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (context) {
-                        return BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                          child: const FractionallySizedBox(
-                            heightFactor: 0.9,
-                            child: BottomSheetUI(
-                              img: 'images/fab7.jpg',
+                  log(animationController.value.toString());
+                },
+                child: BounceInRight(
+                  child: AnimatedBuilder(
+                      animation: animationController,
+                      builder: (context, child) {
+                        return Container(
+                          height: 55 * animationController.value,
+                          padding: const EdgeInsets.all(12.0),
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            gradient: const LinearGradient(
+                              colors: [
+                                Color.fromARGB(255, 80, 4, 4),
+                                Color.fromARGB(255, 234, 32, 14),
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Continue",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22 * animationController.value,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         );
-                      });
-                },
-                child: Material(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.white,
-                  elevation: 4,
-                  child: Container(
-                    height: 50,
-                    padding: const EdgeInsets.all(12.0),
-                    width: Get.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.blue.withOpacity(0.9),
-                          Colors.blue.withOpacity(0.6),
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                      ),
-                    ),
-                    child: Column(
-                      // crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        // Positioned(
-                        //   top: 0,
-                        //   right: 0,
-                        //   child: Container(
-                        //     padding: const EdgeInsets.symmetric(
-                        //         vertical: 2, horizontal: 4),
-                        //     decoration: BoxDecoration(
-                        //       color: Colors.white,
-                        //       borderRadius: BorderRadius.circular(12),
-                        //     ),
-                        //     child: const Text("2 min"),
-                        //   ),
-                        // ),
-                        Center(
-                          child: Text(
-                            "Continue",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20 * animationController.value,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                        // const ListTile(
-                        //   leading: Icon(
-                        //     Icons.wind_power,
-                        //     color: Colors.white,
-                        //   ),
-                        //   title: Text(
-                        //     "Motivator",
-                        // style: TextStyle(
-                        //   color: Colors.white,
-                        //   fontSize: 20,
-                        // ),
-                        //   ),
-                        //   subtitle: Text(
-                        //     "Expande widget to force them",
-                        //     style: TextStyle(
-                        //       color: Colors.white,
-                        //       fontSize: 15,
-                        //     ),
-                        //   ),
-                        //   trailing: Icon(
-                        //     Icons.arrow_forward_ios_outlined,
-                        //     color: Colors.white,
-                        //     size: 20,
-                        //   ),
-                        // )
-                      ],
-                    ),
-                  ),
+                      }),
                 ),
               ),
               const SizedBox(height: 10),
@@ -199,14 +145,16 @@ class _MainScreenState extends State<MainScreen>
                         );
                       });
                 },
-                child: const CardWidget(
-                  time: "7:00 AM",
-                  img: "images/fab6.jpg",
-                  title: "Early Moarning Routine",
-                  color: Colors.amber,
-                  icon: Icon(
-                    Icons.access_alarm,
+                child: BounceInLeft(
+                  child: const CardWidget(
+                    time: "7:00 AM",
+                    img: "images/fab6.jpg",
+                    title: "Early Moarning Routine",
                     color: Colors.amber,
+                    icon: Icon(
+                      Icons.access_alarm,
+                      color: Colors.amber,
+                    ),
                   ),
                 ),
               ),
@@ -229,14 +177,16 @@ class _MainScreenState extends State<MainScreen>
                         );
                       });
                 },
-                child: const CardWidget(
-                  time: "9:00 AM",
-                  img: "images/fab1.jpg",
-                  title: "Moarning Routine",
-                  color: Colors.red,
-                  icon: Icon(
-                    Icons.cloud_circle,
+                child: BounceInRight(
+                  child: const CardWidget(
+                    time: "9:00 AM",
+                    img: "images/fab1.jpg",
+                    title: "Moarning Routine",
                     color: Colors.red,
+                    icon: Icon(
+                      Icons.cloud_circle,
+                      color: Colors.red,
+                    ),
                   ),
                 ),
               ),
@@ -261,15 +211,17 @@ class _MainScreenState extends State<MainScreen>
                             );
                           });
                     },
-                    child: const CardWidget(
-                      isExpanded: true,
-                      time: "1:00 AM",
-                      img: "images/fab3.jpg",
-                      title: "Afternoon Routine",
-                      color: Colors.blue,
-                      icon: Icon(
-                        Icons.cloud_circle,
+                    child: BounceInLeft(
+                      child: const CardWidget(
+                        isExpanded: true,
+                        time: "1:00 AM",
+                        img: "images/fab3.jpg",
+                        title: "Afternoon Routine",
                         color: Colors.blue,
+                        icon: Icon(
+                          Icons.cloud_circle,
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                   ),
