@@ -2,7 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget kheight = const SizedBox(height: 20);
+Widget kheight1 = const SizedBox(height: 10);
+Widget kheight2 = const SizedBox(height: 20);
 
 class CardWidget extends StatelessWidget {
   final String time, img, title;
@@ -176,8 +177,7 @@ class BottomSheetUI extends StatelessWidget {
               ],
             ),
           ),
-          // const SizedBox(height: 10),
-          kheight,
+          kheight2,
           InkWell(
             onTap: () {},
             child: BounceInRight(

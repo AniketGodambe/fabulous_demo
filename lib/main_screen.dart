@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'common_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -77,45 +76,6 @@ class _MainScreenState extends State<MainScreen>
                     ),
                   )
                 ],
-              ),
-              const SizedBox(height: 20),
-              InkWell(
-                onTap: () {
-                  log(animationController.value.toString());
-                },
-                child: BounceInRight(
-                  child: AnimatedBuilder(
-                      animation: animationController,
-                      builder: (context, child) {
-                        return Container(
-                          height: 50 * animationController.value,
-                          padding: const EdgeInsets.all(12.0),
-                          width: Get.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            gradient: const LinearGradient(
-                              colors: [
-                                Color.fromARGB(255, 80, 4, 4),
-                                Color.fromARGB(255, 234, 32, 14),
-                              ],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                            ),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              "Continue",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        );
-                      }),
-                ),
               ),
               const SizedBox(height: 10),
               const Text(
