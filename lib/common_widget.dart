@@ -1,5 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+Widget kheight = const SizedBox(height: 20);
 
 class CardWidget extends StatelessWidget {
   final String time, img, title;
@@ -171,6 +174,40 @@ class BottomSheetUI extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          // const SizedBox(height: 10),
+          kheight,
+          InkWell(
+            onTap: () {},
+            child: BounceInRight(
+              child: Container(
+                height: 50,
+                padding: const EdgeInsets.all(12.0),
+                width: Get.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 80, 4, 4),
+                      Color.fromARGB(255, 234, 32, 14),
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
             ),
           ),
         ],

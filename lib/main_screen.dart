@@ -88,7 +88,7 @@ class _MainScreenState extends State<MainScreen>
                       animation: animationController,
                       builder: (context, child) {
                         return Container(
-                          height: 55 * animationController.value,
+                          height: 50 * animationController.value,
                           padding: const EdgeInsets.all(12.0),
                           width: Get.width,
                           decoration: BoxDecoration(
@@ -102,13 +102,13 @@ class _MainScreenState extends State<MainScreen>
                               end: Alignment.topCenter,
                             ),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Continue",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 22 * animationController.value,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.center,
                             ),
