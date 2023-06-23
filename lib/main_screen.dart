@@ -15,6 +15,8 @@ class _MainScreenState extends State<MainScreen>
     with SingleTickerProviderStateMixin {
   String showAll1 = "Show All";
   String showAll2 = "Show All";
+  bool isHide1 = false;
+  bool isHide2 = false;
 
   late AnimationController animationController;
 
@@ -40,44 +42,49 @@ class _MainScreenState extends State<MainScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white.withOpacity(0.9),
+      backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   leading: const Padding(
+      //     padding: EdgeInsets.all(6.0),
+      //     child: ClipRRect(
+      //       child: CircleAvatar(
+      //         backgroundColor: Colors.grey,
+      //       ),
+      //     ),
+      //   ),
+      //   actions: [
+      //     Row(
+      //       children: [
+      //         Container(
+      //           height: 28,
+      //           padding: const EdgeInsets.only(
+      //               left: 10, right: 10, top: 4, bottom: 4),
+      //           decoration: BoxDecoration(
+      //             color: Colors.red,
+      //             borderRadius: BorderRadius.circular(15),
+      //           ),
+      //           child: Text(
+      //             "Upgrade".toUpperCase(),
+      //             style: const TextStyle(
+      //               color: Colors.white,
+      //               fontSize: 17,
+      //               fontWeight: FontWeight.bold,
+      //             ),
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ],
+      // ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const SizedBox(height: 45),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Your Routines",
-                    style: TextStyle(color: Colors.black, fontSize: 17),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(
-                        top: 2, bottom: 2, left: 6, right: 6),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.add,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          "Create",
-                          style: TextStyle(color: Colors.black, fontSize: 17),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 10),
+              kheight2,
+              kheight2,
               const Text(
                 "Today",
                 style: TextStyle(
@@ -199,6 +206,9 @@ class _MainScreenState extends State<MainScreen>
                       childrenPadding: const EdgeInsets.only(left: 40),
                       onExpansionChanged: (value) {
                         log(value.toString());
+                        setState(() {
+                          isHide1 = value;
+                        });
                         if (value == true) {
                           setState(() {
                             showAll1 = "Collapse";
@@ -209,13 +219,15 @@ class _MainScreenState extends State<MainScreen>
                           });
                         }
                       },
-                      title: const Text(
-                        "3 habits",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 17,
-                        ),
-                      ),
+                      title: isHide1 == true
+                          ? const SizedBox()
+                          : const Text(
+                              "3 habits",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 17,
+                              ),
+                            ),
                       trailing: Padding(
                         padding: const EdgeInsets.only(right: 20),
                         child: Text(
@@ -327,6 +339,9 @@ class _MainScreenState extends State<MainScreen>
                       tilePadding: const EdgeInsets.only(left: 20),
                       childrenPadding: const EdgeInsets.only(left: 40),
                       onExpansionChanged: (value) {
+                        setState(() {
+                          isHide2 = value;
+                        });
                         log(value.toString());
                         if (value == true) {
                           setState(() {
@@ -338,13 +353,15 @@ class _MainScreenState extends State<MainScreen>
                           });
                         }
                       },
-                      title: const Text(
-                        "3 habits",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 17,
-                        ),
-                      ),
+                      title: isHide2 == true
+                          ? const SizedBox()
+                          : const Text(
+                              "3 habits",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 17,
+                              ),
+                            ),
                       trailing: Padding(
                         padding: const EdgeInsets.only(right: 20),
                         child: Text(

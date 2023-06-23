@@ -178,38 +178,42 @@ class BottomSheetUI extends StatelessWidget {
             ),
           ),
           kheight2,
-          InkWell(
-            onTap: () {},
-            child: BounceInRight(
-              child: Container(
-                height: 50,
-                padding: const EdgeInsets.all(12.0),
-                width: Get.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color.fromARGB(255, 80, 4, 4),
-                      Color.fromARGB(255, 234, 32, 14),
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-                child: const Center(
-                  child: Text(
-                    "Continue",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+            child: InkWell(
+              onTap: () {},
+              child: BounceInRight(
+                child: Container(
+                  height: 50,
+                  padding: const EdgeInsets.all(12.0),
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color.fromARGB(255, 80, 4, 4),
+                        Color.fromARGB(255, 234, 32, 14),
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                     ),
-                    textAlign: TextAlign.center,
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
+          kheight2,
         ],
       ),
     );
